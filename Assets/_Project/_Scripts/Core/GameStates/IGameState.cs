@@ -1,4 +1,4 @@
-using _Project._Scripts.Infrastructure.StateMachine;
+using _Project._Scripts.StateMachine;
 
 namespace _Project._Scripts.Core.GameStates
 {

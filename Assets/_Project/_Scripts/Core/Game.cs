@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using _Project._Scripts.Core.GameStates;
 using _Project._Scripts.Infrastructure;
-using _Project._Scripts.Infrastructure.StateMachine;
+using _Project._Scripts.StateMachine;
 
 namespace _Project._Scripts.Core
 {
