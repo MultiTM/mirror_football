@@ -1,4 +1,4 @@
-namespace _Project._Scripts.Infrastructure
+namespace _Project._Scripts.Core.GameStates
 {
     public class BootstrapState : GameStateBase
     {
