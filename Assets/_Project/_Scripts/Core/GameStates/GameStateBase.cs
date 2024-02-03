@@ -11,12 +11,10 @@ namespace _Project._Scripts.Core.GameStates
         
         public virtual void Enter()
         {
-            throw new System.NotImplementedException();
         }
 
         public virtual void Exit()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

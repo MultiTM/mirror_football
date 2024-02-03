@@ -74,3 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7990d775b5154ed2bb6b9a3eacfe4d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneProvider: {fileID: 11400000, guid: 34fe24a11961f4bfc97166f6b95e644e, type: 2}
+  _networkManagerPrefab: {fileID: 2672023780490513640, guid: a2d809178d389498aa8918f23258dd09,
+    type: 3}

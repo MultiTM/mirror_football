@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SceneProvider
   m_EditorClassIdentifier: 
   _menuScene: {fileID: 102900000, guid: aabe2386de94d4e288083c1ac231b84e, type: 3}
-  _gameplayScene: {fileID: 102900000, guid: f6eb8474332854b208471e822e92098c, type: 3}
+  _gameplayScene: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
