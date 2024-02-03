@@ -15,10 +15,5 @@ namespace _Project._Scripts.Core.GameStates
         {
             _sceneLoadService.LoadMenuScene();
         }
-
-        public override void Exit()
-        {
-            _sceneLoadService.UnloadMenuScene();
-        }
     }
 }

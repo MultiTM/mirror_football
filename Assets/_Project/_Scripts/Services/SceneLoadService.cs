@@ -35,12 +35,12 @@ namespace _Project._Scripts.Services
         
         private async UniTask LoadSceneAsync(string sceneName)
         {
-            await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync(sceneName);
         }
 
         private async UniTask UnloadSceneAsync(string sceneName)
         {
-            await UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(sceneName);
+            await SceneManager.UnloadSceneAsync(sceneName);
         }
     }
 }

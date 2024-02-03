@@ -23,7 +23,7 @@ namespace _Project._Scripts.Infrastructure.Installers
 
         private void InstallNetworkManagement()
         {
-            Container.Bind<NetworkManager>().FromComponentInNewPrefab(_networkManagerPrefab).AsSingle();
+            Container.Bind<NetworkManager>().FromInstance(_networkManagerPrefab).AsSingle();
         }
 
         private void InstallConfigs()
@@ -34,6 +34,8 @@ namespace _Project._Scripts.Infrastructure.Installers
         private void InstallServices()
         {
             Container.Bind<SceneLoadService>().AsSingle();
+            Container.Bind<GameplayFlowProvider>().AsSingle();
+            Container.Bind<GameProvider>().AsSingle();
         }
 
         private void InstallCore()
@@ -41,6 +43,7 @@ namespace _Project._Scripts.Infrastructure.Installers
             Container.Bind<Game>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
             Container.BindInterfacesAndSelfTo<MenuState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameplayInitState>().AsSingle();
             Container.BindInterfacesAndSelfTo<LobbyState>().AsSingle();
             Container.BindInterfacesAndSelfTo<SpawnState>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameplayState>().AsSingle();

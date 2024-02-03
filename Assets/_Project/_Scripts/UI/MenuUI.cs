@@ -1,7 +1,6 @@
 using _Project._Scripts.Core;
 using _Project._Scripts.Core.GameStates;
 using _Project._Scripts.Network;
-using _Project._Scripts.Services;
 using UnityEngine;
 using Zenject;
 
@@ -22,13 +21,13 @@ namespace _Project._Scripts.UI
         public void StartHost()
         {
             _networkManager.StartHost();
-            _game.EnterState<LobbyState>();
+            _game.EnterState<GameplayInitState>();
         }
 
         public void StartClient()
         {
             _networkManager.StartClient();
-            _game.EnterState<LobbyState>();
+            _game.EnterState<GameplayInitState>();
         }
 
         public void QuitGame()

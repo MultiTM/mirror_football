@@ -33,11 +33,5 @@ namespace _Project._Scripts.Core
             _cannonHolder.Rotate(Vector3.up * (mouseX * _sensitivity));
             _cannon.transform.Rotate(-Vector3.right * (mouseY * _sensitivity));
         }
-        
-        [TargetRpc]
-        public void RpcDisableMainCamera(NetworkConnectionToClient target)
-        {
-            Camera.main.gameObject.SetActive(false);
-        }
     }
 }
