@@ -17,11 +17,6 @@ namespace _Project._Scripts.Services
         {
             await LoadSceneAsync(_sceneProvider.MenuScene);
         }
-
-        public async void LoadGameplayScene()
-        {
-            await LoadSceneAsync(_sceneProvider.GameplayScene);
-        }
         
         private async UniTask LoadSceneAsync(string sceneName)
         {
