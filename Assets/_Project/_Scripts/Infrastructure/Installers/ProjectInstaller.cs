@@ -36,6 +36,7 @@ namespace _Project._Scripts.Infrastructure.Installers
             Container.Bind<SceneLoadService>().AsSingle();
             Container.Bind<GameplayFlowProvider>().AsSingle();
             Container.Bind<GameProvider>().AsSingle();
+            Container.Bind<LobbyCameraProvider>().AsSingle();
         }
 
         private void InstallCore()
