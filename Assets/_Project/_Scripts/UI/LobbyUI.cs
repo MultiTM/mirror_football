@@ -22,10 +22,18 @@ namespace _Project._Scripts.UI
             if (NetworkClient.isConnected)
             {
                 NetworkClient.Send(new PlayerSpawnMessage());
-                
-                gameObject.SetActive(false);
-                _game.EnterState<SpawnState>();
+                _game.EnterState<GameplayState>();
             }
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

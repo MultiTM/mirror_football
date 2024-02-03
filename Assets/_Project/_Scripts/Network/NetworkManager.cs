@@ -1,6 +1,5 @@
 using _Project._Scripts.Core.GameStates;
 using _Project._Scripts.Network.Messages;
-using _Project._Scripts.Services;
 using Mirror;
 using UnityEngine;
 using Zenject;
@@ -9,19 +8,25 @@ namespace _Project._Scripts.Network
 {
     public class NetworkManager : Mirror.NetworkManager
     {
-        private GameProvider _gameProvider;
+        private ConnectingState _connectingState;
 
         [Inject]
-        private void Construct(GameProvider gameProvider)
+        private void Construct(ConnectingState connectingState)
         {
-            _gameProvider = gameProvider;
+            _connectingState = connectingState;
         }
 
         public override void OnClientError(TransportError error, string reason)
         {
             Debug.LogError(reason);
             StopClient();
-            _gameProvider.Game.EnterState<MenuState>();
+            _connectingState.OnConnectionFailed();
+        }
+
+        public override void OnClientConnect()
+        {
+            base.OnClientConnect();
+            _connectingState.OnConnected();
         }
 
         public override void OnStartServer()

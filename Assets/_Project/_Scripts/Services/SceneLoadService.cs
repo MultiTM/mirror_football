@@ -23,24 +23,9 @@ namespace _Project._Scripts.Services
             await LoadSceneAsync(_sceneProvider.GameplayScene);
         }
         
-        public async void UnloadMenuScene()
-        {
-            await UnloadSceneAsync(_sceneProvider.MenuScene);
-        }
-
-        public async void UnloadGameplayScene()
-        {
-            await UnloadSceneAsync(_sceneProvider.GameplayScene);
-        }
-        
         private async UniTask LoadSceneAsync(string sceneName)
         {
             await SceneManager.LoadSceneAsync(sceneName);
-        }
-
-        private async UniTask UnloadSceneAsync(string sceneName)
-        {
-            await SceneManager.UnloadSceneAsync(sceneName);
         }
     }
 }

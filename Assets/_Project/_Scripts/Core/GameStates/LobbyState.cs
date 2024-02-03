@@ -4,21 +4,23 @@ namespace _Project._Scripts.Core.GameStates
 {
     public class LobbyState : GameStateBase
     {
-        private LobbyCameraProvider _lobbyCameraProvider;
+        private GameplayServicesProvider _provider;
         
-        public LobbyState(LobbyCameraProvider lobbyCameraProvider)
+        public LobbyState(GameplayServicesProvider provider)
         {
-            _lobbyCameraProvider = lobbyCameraProvider;
+            _provider = provider;
         }
         
         public override void Enter()
         {
-            _lobbyCameraProvider.LobbyCamera.Enable();
+            _provider.Services.LobbyUI.Show();
+            _provider.Services.LobbyCamera.Enable();
         }
 
         public override void Exit()
         {
-            _lobbyCameraProvider.LobbyCamera.Disable();
+            _provider.Services.LobbyUI.Hide();
+            _provider.Services.LobbyCamera.Disable();
         }
     }
 }

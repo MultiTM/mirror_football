@@ -21,13 +21,13 @@ namespace _Project._Scripts.UI
         public void StartHost()
         {
             _networkManager.StartHost();
-            _game.EnterState<GameplayInitState>();
+            _game.EnterState<ConnectingState>();
         }
 
         public void StartClient()
         {
             _networkManager.StartClient();
-            _game.EnterState<GameplayInitState>();
+            _game.EnterState<ConnectingState>();
         }
 
         public void QuitGame()

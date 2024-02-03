@@ -11,6 +11,7 @@ namespace _Project._Scripts.Infrastructure.Installers
     public class ProjectInstaller : MonoInstaller
     {
         [SerializeField] private SceneProvider _sceneProvider;
+        [SerializeField] private GameConfig _gameConfig;
         [SerializeField] private NetworkManager _networkManagerPrefab;
         
         public override void InstallBindings()
@@ -29,14 +30,14 @@ namespace _Project._Scripts.Infrastructure.Installers
         private void InstallConfigs()
         {
             Container.Bind<SceneProvider>().FromScriptableObject(_sceneProvider).AsSingle();
+            Container.Bind<GameConfig>().FromScriptableObject(_gameConfig).AsSingle();
         }
 
         private void InstallServices()
         {
             Container.Bind<SceneLoadService>().AsSingle();
-            Container.Bind<GameplayFlowProvider>().AsSingle();
             Container.Bind<GameProvider>().AsSingle();
-            Container.Bind<LobbyCameraProvider>().AsSingle();
+            Container.Bind<GameplayServicesProvider>().AsSingle();
         }
 
         private void InstallCore()
@@ -44,9 +45,9 @@ namespace _Project._Scripts.Infrastructure.Installers
             Container.Bind<Game>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
             Container.BindInterfacesAndSelfTo<MenuState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ConnectingState>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameplayInitState>().AsSingle();
             Container.BindInterfacesAndSelfTo<LobbyState>().AsSingle();
-            Container.BindInterfacesAndSelfTo<SpawnState>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameplayState>().AsSingle();
         }
     }
