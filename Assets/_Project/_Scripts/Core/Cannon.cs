@@ -7,12 +7,15 @@ namespace _Project._Scripts.Core
     {
         [SerializeField] private Player _player;
         [SerializeField] private Camera _camera;
-        [SerializeField] private Transform _ballSpawnPoint;
-        [SerializeField] private Transform _cannonHolder;
+        [Header("Rotation")]
         [SerializeField] private Transform _cannon;
+        [SerializeField] private Transform _cannonHolder;
         [SerializeField] private float _sensitivity = 1f;
+        [Header("Shooting")]
+        [SerializeField] private Transform _ballSpawnPoint;
         [SerializeField] private Vector3 _shootingForce;
         [SerializeField] private Ball _ballPrefab;
+        [Header("Visuals")]
         [SerializeField] private MeshRenderer _cannonMesh;
         
         private float _shootingStrength = 0f;
