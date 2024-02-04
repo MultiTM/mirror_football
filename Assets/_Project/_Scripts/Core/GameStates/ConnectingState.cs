@@ -1,9 +1,12 @@
+using Mirror;
+
 namespace _Project._Scripts.Core.GameStates
 {
     public class ConnectingState : GameStateBase
     {
         public void OnConnectionFailed()
         {
+            NetworkClient.Shutdown();
             _game.EnterState<MenuState>();
         }
 
@@ -14,6 +17,7 @@ namespace _Project._Scripts.Core.GameStates
 
         public void OnDisconnected()
         {
+            NetworkClient.Shutdown();
             _game.EnterState<MenuState>();
         }
     }

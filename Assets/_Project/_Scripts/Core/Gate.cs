@@ -13,7 +13,7 @@ namespace _Project._Scripts.Core
         private Transform[] _targetPositions;
         private int _targetPositionIndex = 0;
         
-        [SerializeField][SyncVar] private Color _color;
+        [SyncVar] private Color _color;
 
         public override void OnStartClient()
         {

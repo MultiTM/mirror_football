@@ -13,7 +13,6 @@ namespace _Project._Scripts.Core
         [SyncVar] private Color _color;
 
         public int Id => _id;
-        public Color Color => _color;
 
         public override void OnStartClient()
         {
