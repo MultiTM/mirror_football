@@ -36,7 +36,6 @@ namespace _Project._Scripts.Infrastructure.Installers
         private void InstallServices()
         {
             Container.Bind<SceneLoadService>().AsSingle();
-            Container.Bind<GameProvider>().AsSingle();
             Container.Bind<GameplayServicesProvider>().AsSingle();
         }
 

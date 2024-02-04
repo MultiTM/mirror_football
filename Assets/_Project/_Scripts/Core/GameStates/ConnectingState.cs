@@ -9,7 +9,7 @@ namespace _Project._Scripts.Core.GameStates
 
         public void OnConnected()
         {
-            _game.EnterState<LobbyState>();
+            _game.EnterState<GameplayInitState>();
         }
     }
 }
