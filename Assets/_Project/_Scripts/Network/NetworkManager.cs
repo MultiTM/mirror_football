@@ -18,11 +18,18 @@ namespace _Project._Scripts.Network
             _connectingState = connectingState;
         }
 
+        #region Client
+        
         public override void OnClientError(TransportError error, string reason)
         {
             Debug.LogError(reason);
             StopClient();
             _connectingState.OnConnectionFailed();
+        }
+
+        public override void OnClientDisconnect()
+        {
+            _connectingState.OnDisconnected();
         }
 
         public override void OnClientConnect()
@@ -31,6 +38,10 @@ namespace _Project._Scripts.Network
             _connectingState.OnConnected();
         }
 
+        #endregion
+
+        #region Server
+        
         public override void OnStartServer()
         {
             NetworkServer.RegisterHandler<PlayerReadyMessage>(OnPlayerReady);
@@ -43,11 +54,14 @@ namespace _Project._Scripts.Network
             NetworkServer.AddPlayerForConnection(conn, playerGO);
             var player = playerGO.GetComponent<Player>();
             player.RpcSetId(_playerCount++);
+            player.RpcSetColor(message.Color);
         }
 
         public override void OnStopServer()
         {
             _playerCount = 0;
         }
+        
+        #endregion
     }
 }

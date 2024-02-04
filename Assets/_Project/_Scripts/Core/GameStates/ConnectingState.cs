@@ -11,5 +11,10 @@ namespace _Project._Scripts.Core.GameStates
         {
             _game.EnterState<GameplayInitState>();
         }
+
+        public void OnDisconnected()
+        {
+            _game.EnterState<MenuState>();
+        }
     }
 }

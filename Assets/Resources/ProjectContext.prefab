@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneProvider: {fileID: 11400000, guid: 34fe24a11961f4bfc97166f6b95e644e, type: 2}
+  _gameConfig: {fileID: 11400000, guid: 5802da1bdd56346648fca0eff74088c4, type: 2}
   _networkManagerPrefab: {fileID: 2698554131890277129}
 --- !u!1001 &29238040835852257
 PrefabInstance:

@@ -13,6 +13,7 @@ namespace _Project._Scripts.Core
         [SerializeField] private float _sensitivity = 1f;
         [SerializeField] private Vector3 _shootingForce;
         [SerializeField] private Ball _ballPrefab;
+        [SerializeField] private MeshRenderer _cannonMesh;
         
         private float _shootingStrength = 0f;
 
@@ -21,13 +22,14 @@ namespace _Project._Scripts.Core
             _camera.gameObject.SetActive(true);
         }
 
+        [ClientCallback]
         private void Update()
         {
             if (!isOwned)
             {
                 return;
             }
-
+            
             ProcessRotation();
             ProcessShooting();
         }
@@ -63,6 +65,14 @@ namespace _Project._Scripts.Core
             
             var force = _ballSpawnPoint.rotation * (_shootingForce * strength);
             ball.Rigidbody.AddForce(force, ForceMode.Impulse);
+        }
+
+        [Client]
+        public void SetColor(Color color)
+        {
+            var mpb = new MaterialPropertyBlock();
+            mpb.SetColor("_BaseColor", color);
+            _cannonMesh.SetPropertyBlock(mpb);
         }
     }
 }

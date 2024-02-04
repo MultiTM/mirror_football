@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 4249682843779283060}
   - component: {fileID: 5492077576135485192}
   m_Layer: 0
-  m_Name: Cannon
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -470,6 +470,7 @@ MonoBehaviour:
   _shootingForce: {x: 0, y: 0, z: 3}
   _ballPrefab: {fileID: 9184683081851252622, guid: 442527cd659e842bc946a9497f4fbb20,
     type: 3}
+  _cannonMesh: {fileID: 184366556022769495}
 --- !u!114 &1445078836626067589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +487,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   _pointsView: {fileID: 7160913992886039282}
+  _cannon: {fileID: 2134918086434676484}
 --- !u!114 &4249682843779283060
 MonoBehaviour:
   m_ObjectHideFlags: 0

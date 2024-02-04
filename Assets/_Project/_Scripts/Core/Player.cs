@@ -6,13 +6,14 @@ namespace _Project._Scripts.Core
     public class Player : NetworkBehaviour
     {
         [SerializeField] private PlayerPointsView _pointsView;
+        [SerializeField] private Cannon _cannon;
         
         [SyncVar] private int _points;
-        [SyncVar] private Color _color;
         [SyncVar] private int _id;
+        [SyncVar] private Color _color;
 
         public int Id => _id;
-        public int Points => _points;
+        public Color Color => _color;
 
         [ClientRpc]
         public void RpcSetId(int id)
@@ -25,6 +26,13 @@ namespace _Project._Scripts.Core
         {
             _points += points;
             _pointsView.SetPoints(_points);
+        }
+
+        [ClientRpc]
+        public void RpcSetColor(Color color)
+        {
+            _color = color;
+            _cannon.SetColor(_color);
         }
     }
 }

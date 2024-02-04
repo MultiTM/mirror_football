@@ -1,13 +1,13 @@
+using System;
 using _Project._Scripts.Core;
 using _Project._Scripts.Core.GameStates;
 using _Project._Scripts.Services;
 using _Project._Scripts.UI;
-using UnityEngine;
 using Zenject;
 
 namespace _Project._Scripts.Infrastructure
 {
-    public class GameplayServices : IInitializable
+    public class GameplayServices : IInitializable, IDisposable
     {
         private GameplayServicesProvider _provider;
         private Game _game;
@@ -31,9 +31,13 @@ namespace _Project._Scripts.Infrastructure
         
         public void Initialize()
         {
-            Debug.Log("EnterLobby");
             _provider.SetServices(this);
             _game.EnterState<LobbyState>();
+        }
+
+        public void Dispose()
+        {
+            _provider.SetServices(null);
         }
     }
 }
