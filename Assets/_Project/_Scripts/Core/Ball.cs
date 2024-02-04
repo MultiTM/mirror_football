@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Mirror;
 using UnityEngine;
@@ -9,6 +11,8 @@ namespace _Project._Scripts.Core
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _lifetimeSeconds = 30f;
         private Player _player;
+        private CancellationTokenSource _cancellationTokenSource = new(); // cancel network destroy on exit play mode
+        private CancellationToken _cancellationToken;
         
         public Rigidbody Rigidbody => _rigidbody;
         public Player Player => _player;
@@ -18,25 +22,27 @@ namespace _Project._Scripts.Core
             _player = player;
         }
 
-        public override async void OnStartServer()
+        public override void OnStartServer()
         {
-            await DestroySelfAfterTime();
-        }
-
-        [Server]
-        private async UniTask DestroySelfAfterTime()
-        {
-            await UniTask.Delay(Mathf.RoundToInt(_lifetimeSeconds * 1000));
-            NetworkServer.Destroy(gameObject);
+            _cancellationToken = _cancellationTokenSource.Token;
+            UniTask.Create(() => DestroySelfAfterTime(_cancellationToken));
         }
 
         [ServerCallback]
-        private void Update()
+        public void OnDestroy()
         {
-            if (transform.position.y < -5f)
+            _cancellationTokenSource.Cancel();
+        }
+
+        private async UniTask DestroySelfAfterTime(CancellationToken token)
+        {
+            await UniTask.Delay(Mathf.RoundToInt(_lifetimeSeconds * 1000));
+            if (token.IsCancellationRequested)
             {
-                NetworkServer.Destroy(gameObject);
+                return;
             }
+            
+            NetworkServer.Destroy(gameObject);
         }
     }
 }
