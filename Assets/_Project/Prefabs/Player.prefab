@@ -59,7 +59,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4561050420926121373}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -307,13 +307,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4891494895451265714}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: -0.4, z: -1.22}
+  m_LocalRotation: {x: -0.61852574, y: -0, z: -0, w: 0.7857646}
+  m_LocalPosition: {x: 0, y: -0.4, z: -2.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1519803783249383728}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -76.417, y: 0, z: 0}
 --- !u!20 &2657534670120709207
 Camera:
   m_ObjectHideFlags: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
   _cannonHolder: {fileID: 1460925156356590753}
   _cannon: {fileID: 3586363433030090253}
   _sensitivity: 3
-  _shootingForce: {x: 0, y: 0, z: 3}
+  _shootingForce: {x: 0, y: 5, z: 20}
   _ballPrefab: {fileID: 9184683081851252622, guid: 442527cd659e842bc946a9497f4fbb20,
     type: 3}
   _cannonMesh: {fileID: 184366556022769495}

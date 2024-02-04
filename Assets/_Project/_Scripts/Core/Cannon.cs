@@ -53,6 +53,7 @@ namespace _Project._Scripts.Core
             if (Input.GetMouseButtonUp(0) && _shootingStrength > 0f)
             {
                 CmdShoot(_shootingStrength);
+                _shootingStrength = 0;
             }
         }
 
