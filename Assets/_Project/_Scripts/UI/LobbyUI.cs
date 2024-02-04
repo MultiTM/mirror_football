@@ -37,7 +37,8 @@ namespace _Project._Scripts.UI
 
         public void NextColor()
         {
-            _colorIndex = (_colorIndex + 1) % _gameConfig.PlayerColors.Length;
+            _colorIndex++;
+            _colorIndex %= _gameConfig.PlayerColors.Length;
             SetPreviewColor(_colorIndex);
         }
 

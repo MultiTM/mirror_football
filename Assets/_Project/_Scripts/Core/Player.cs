@@ -15,10 +15,21 @@ namespace _Project._Scripts.Core
         public int Id => _id;
         public Color Color => _color;
 
+        public override void OnStartClient()
+        {
+            _cannon.SetColor(_color);
+        }
+
         [ClientRpc]
         public void RpcSetId(int id)
         {
             _id = id;
+        }
+
+        [ClientRpc]
+        public void RpcSetPoints(int points)
+        {
+            _points = points;
         }
 
         [ClientRpc]

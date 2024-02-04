@@ -91,6 +91,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2672023780490513640, guid: a2d809178d389498aa8918f23258dd09,
+        type: 3}
+      propertyPath: _gatePrefab
+      value: 
+      objectReference: {fileID: 5400180979291229004, guid: 37f3a4401dd754d9ea23e49aaad7cdbd,
+        type: 3}
+    - target: {fileID: 2672023780490513640, guid: a2d809178d389498aa8918f23258dd09,
+        type: 3}
+      propertyPath: spawnPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672023780490513640, guid: a2d809178d389498aa8918f23258dd09,
+        type: 3}
+      propertyPath: spawnPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8231101173012350111, guid: 37f3a4401dd754d9ea23e49aaad7cdbd,
+        type: 3}
     - target: {fileID: 4861322923633741303, guid: a2d809178d389498aa8918f23258dd09,
         type: 3}
       propertyPath: m_LocalPosition.x
