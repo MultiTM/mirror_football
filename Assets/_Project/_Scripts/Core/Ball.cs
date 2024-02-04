@@ -4,9 +4,6 @@ using UnityEngine;
 
 namespace _Project._Scripts.Core
 {
-    [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(NetworkRigidbodyReliable))]
-    [RequireComponent(typeof(NetworkIdentity))]
     public class Ball : NetworkBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
@@ -26,6 +23,7 @@ namespace _Project._Scripts.Core
             await DestroySelfAfterTime();
         }
 
+        [Server]
         private async UniTask DestroySelfAfterTime()
         {
             await UniTask.Delay(Mathf.RoundToInt(_lifetimeSeconds * 1000));

@@ -19,6 +19,13 @@ namespace _Project._Scripts.Core
         {
             ApplyColor();
         }
+        
+        [ClientRpc]
+        public void RpcSetColor(Color color)
+        {
+            _color = color;
+            ApplyColor();
+        }
 
         public void SetPlayer(Player player)
         {
@@ -28,13 +35,6 @@ namespace _Project._Scripts.Core
         public void SetTargetPositions(Transform[] positions)
         {
             _targetPositions = positions;
-        }
-
-        [ClientRpc]
-        public void RpcSetColor(Color color)
-        {
-            _color = color;
-            ApplyColor();
         }
 
         private void ApplyColor()
