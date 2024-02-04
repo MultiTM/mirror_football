@@ -14,12 +14,14 @@ namespace _Project._Scripts.Core
         public int Id => _id;
         public int Points => _points;
 
-        public void SetId(int id)
+        [ClientRpc]
+        public void RpcSetId(int id)
         {
             _id = id;
         }
 
-        public void AddPoints(int points)
+        [ClientRpc]
+        public void RpcAddPoints(int points)
         {
             _points += points;
             _pointsView.SetPoints(_points);

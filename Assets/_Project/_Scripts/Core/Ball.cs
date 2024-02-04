@@ -18,5 +18,14 @@ namespace _Project._Scripts.Core
         {
             _player = player;
         }
+
+        [ServerCallback]
+        private void Update()
+        {
+            if (transform.position.y < -5f)
+            {
+                NetworkServer.Destroy(gameObject);
+            }
+        }
     }
 }

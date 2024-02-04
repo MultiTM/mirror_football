@@ -7,6 +7,8 @@ namespace _Project._Scripts.Core
     {
         [SerializeField] private Player _player;
 
+        private const int PointsPerGoal = 1;
+
         [ServerCallback]
         private void OnTriggerEnter(Collider other)
         {
@@ -14,8 +16,9 @@ namespace _Project._Scripts.Core
             {
                 if (ball.Player.Id != _player.Id)
                 {
-                    ball.Player.AddPoints(1);
-                    _player.AddPoints(-1);
+                    ball.Player.RpcAddPoints(PointsPerGoal);
+                    _player.RpcAddPoints(-PointsPerGoal);
+                    NetworkServer.Destroy(ball.gameObject);
                 }
             }
         }

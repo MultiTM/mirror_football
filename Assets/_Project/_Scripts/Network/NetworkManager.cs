@@ -10,14 +10,12 @@ namespace _Project._Scripts.Network
     public class NetworkManager : Mirror.NetworkManager
     {
         private ConnectingState _connectingState;
-        // private PlayerManager _playerManager;
+        private int _playerCount;
 
         [Inject]
-        // private void Construct(ConnectingState connectingState, PlayerManager playerManager)
         private void Construct(ConnectingState connectingState)
         {
             _connectingState = connectingState;
-            // _playerManager = playerManager;
         }
 
         public override void OnClientError(TransportError error, string reason)
@@ -44,14 +42,12 @@ namespace _Project._Scripts.Network
             var playerGO = Instantiate(playerPrefab, spawnTransform.position, spawnTransform.rotation);
             NetworkServer.AddPlayerForConnection(conn, playerGO);
             var player = playerGO.GetComponent<Player>();
-            // _playerManager.AddPlayer(player);
+            player.RpcSetId(_playerCount++);
         }
 
-        public override void OnServerDisconnect(NetworkConnectionToClient conn)
+        public override void OnStopServer()
         {
-            var player = conn.identity.GetComponent<Player>();
-            // _playerManager.RemovePlayer(player);
-            base.OnServerDisconnect(conn);
+            _playerCount = 0;
         }
     }
 }

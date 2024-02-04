@@ -107,6 +107,6 @@ MonoBehaviour:
   MaximizeSocketBuffers: 1
   ReliableMaxMessageSize: 297433
   UnreliableMaxMessageSize: 1195
-  debugLog: 1
+  debugLog: 0
   statisticsGUI: 0
   statisticsLog: 0
