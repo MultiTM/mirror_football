@@ -21,7 +21,7 @@ namespace _Project._Scripts.UI
         {
             if (NetworkClient.isConnected)
             {
-                NetworkClient.Send(new PlayerSpawnMessage());
+                NetworkClient.Send(new PlayerReadyMessage());
                 _game.EnterState<GameplayState>();
             }
         }

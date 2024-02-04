@@ -5,6 +5,7 @@ namespace _Project._Scripts.Core
 {
     public class Cannon : NetworkBehaviour
     {
+        [SerializeField] private Player _player;
         [SerializeField] private Camera _camera;
         [SerializeField] private Transform _ballSpawnPoint;
         [SerializeField] private Transform _cannonHolder;
@@ -58,6 +59,7 @@ namespace _Project._Scripts.Core
         {
             var ball = Instantiate(_ballPrefab, _ballSpawnPoint.position, _ballSpawnPoint.rotation);
             NetworkServer.Spawn(ball.gameObject);
+            ball.SetPlayer(_player);
             
             var force = _ballSpawnPoint.rotation * (_shootingForce * strength);
             ball.Rigidbody.AddForce(force, ForceMode.Impulse);
