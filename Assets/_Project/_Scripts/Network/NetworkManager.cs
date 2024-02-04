@@ -58,18 +58,33 @@ namespace _Project._Scripts.Network
         private void OnPlayerReady(NetworkConnectionToClient conn, PlayerReadyMessage message)
         {
             var startPosition = _servicesProvider.Services.StartPositionProvider.GetPosition();
-            var playerGO = Instantiate(playerPrefab, startPosition.CannonStartPosition.position, startPosition.CannonStartPosition.rotation);
+            var player = CreatePlayer(conn, message, startPosition);
+            CreateGate(message, startPosition, player);
+        }
+
+        private Gate CreateGate(PlayerReadyMessage message, NetworkPlayerStartPosition startPosition, Player player)
+        {
+            var gate = Instantiate(_gatePrefab, startPosition.GateStartPosition.position,
+                startPosition.GateStartPosition.rotation);
+            NetworkServer.Spawn(gate.gameObject);
+            gate.SetPlayer(player);
+            gate.SetTargetPositions(startPosition.GateTargetPositions);
+            gate.RpcSetColor(message.Color);
+
+            return gate;
+        }
+
+        private Player CreatePlayer(NetworkConnectionToClient conn, PlayerReadyMessage message,
+            NetworkPlayerStartPosition startPosition)
+        {
+            var playerGO = Instantiate(playerPrefab, startPosition.CannonStartPosition.position,
+                startPosition.CannonStartPosition.rotation);
             var player = playerGO.GetComponent<Player>();
             NetworkServer.AddPlayerForConnection(conn, player.gameObject);
             player.RpcSetId(_playerCount++);
             player.RpcSetColor(message.Color);
             player.RpcSetPoints(_gameConfig.InitialPoints);
-            
-            var gate = Instantiate(_gatePrefab, startPosition.GateStartPosition.position, startPosition.GateStartPosition.rotation);
-            NetworkServer.Spawn(gate.gameObject);
-            gate.SetPlayer(player);
-            gate.SetTargetPositions(startPosition.GateTargetPositions);
-            gate.RpcSetColor(message.Color);
+            return player;
         }
 
         public override void OnStopServer()

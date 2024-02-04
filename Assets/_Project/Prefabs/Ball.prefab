@@ -115,6 +115,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   _rigidbody: {fileID: 6817171694595656112}
+  _lifetimeSeconds: 20
 --- !u!114 &6695316896637238903
 MonoBehaviour:
   m_ObjectHideFlags: 0
