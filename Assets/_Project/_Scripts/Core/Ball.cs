@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Mirror;
@@ -11,8 +10,7 @@ namespace _Project._Scripts.Core
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _lifetimeSeconds = 30f;
         private Player _player;
-        private CancellationTokenSource _cancellationTokenSource = new(); // cancel network destroy on exit play mode
-        private CancellationToken _cancellationToken;
+        private CancellationTokenSource _cancellationTokenSource = new(); // cancel network destroy after exit play mode
         
         public Rigidbody Rigidbody => _rigidbody;
         public Player Player => _player;
@@ -24,8 +22,7 @@ namespace _Project._Scripts.Core
 
         public override void OnStartServer()
         {
-            _cancellationToken = _cancellationTokenSource.Token;
-            UniTask.Create(() => DestroySelfAfterTime(_cancellationToken));
+            UniTask.Create(() => DestroySelfAfterTime(_cancellationTokenSource.Token));
         }
 
         [ServerCallback]

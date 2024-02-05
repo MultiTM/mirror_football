@@ -21,7 +21,6 @@ namespace _Project._Scripts.Core.GameStates
         {
             InitGame();
             _sceneLoadService.LoadMenuScene();
-            _game.EnterState<MenuState>();
         }
 
         private void InitGame()
