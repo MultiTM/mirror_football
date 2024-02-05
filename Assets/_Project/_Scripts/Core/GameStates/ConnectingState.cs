@@ -1,13 +1,21 @@
+using _Project._Scripts.Services;
 using Mirror;
 
 namespace _Project._Scripts.Core.GameStates
 {
     public class ConnectingState : GameStateBase
     {
-        public void OnConnectionFailed()
+        private SceneLoadService _sceneLoadService;
+        
+        public ConnectingState(SceneLoadService sceneLoadService)
+        {
+            _sceneLoadService = sceneLoadService;
+        }
+        
+        public async void OnConnectionFailed()
         {
             NetworkClient.Shutdown();
-            _game.EnterState<MenuState>();
+            await _sceneLoadService.LoadMenuScene();
         }
 
         public void OnConnected()
@@ -15,10 +23,10 @@ namespace _Project._Scripts.Core.GameStates
             _game.EnterState<GameplayInitState>();
         }
 
-        public void OnDisconnected()
+        public async void OnDisconnected()
         {
             NetworkClient.Shutdown();
-            _game.EnterState<MenuState>();
+            await _sceneLoadService.LoadMenuScene();
         }
     }
 }

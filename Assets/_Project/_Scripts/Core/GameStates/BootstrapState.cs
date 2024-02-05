@@ -17,10 +17,10 @@ namespace _Project._Scripts.Core.GameStates
             _sceneLoadService = sceneLoadService;
         }
         
-        public override void Enter()
+        public override async void Enter()
         {
             InitGame();
-            _sceneLoadService.LoadMenuScene();
+            await _sceneLoadService.LoadMenuScene();
         }
 
         private void InitGame()

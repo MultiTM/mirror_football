@@ -13,9 +13,9 @@ namespace _Project._Scripts.Services
             _sceneProvider = sceneProvider;
         }
 
-        public async void LoadMenuScene()
+        public UniTask LoadMenuScene()
         {
-            await LoadSceneAsync(_sceneProvider.MenuScene);
+            return LoadSceneAsync(_sceneProvider.MenuScene);
         }
         
         private async UniTask LoadSceneAsync(string sceneName)

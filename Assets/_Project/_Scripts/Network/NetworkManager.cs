@@ -30,7 +30,7 @@ namespace _Project._Scripts.Network
         
         public override void OnClientError(TransportError error, string reason)
         {
-            Debug.LogError(reason);
+            Debug.LogWarning(reason);
             StopClient();
             _connectingState.OnConnectionFailed();
         }
